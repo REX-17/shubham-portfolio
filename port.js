@@ -1,8 +1,3 @@
-// Open documents
-function openDoc(path) {
-  window.open(path, "_blank");
-}
-
 // Dark mode toggle
 const toggle = document.getElementById("themeToggle");
 toggle.addEventListener("click", () => {
@@ -46,11 +41,10 @@ function closeProject() {
   modal.classList.remove("active");
 }
 
-// Close modal on outside click
+// Close project modal on outside click
 modal.addEventListener("click", (e) => {
   if (e.target === modal) closeProject();
 });
-
 
 // Toggle certifications dropdown
 function toggleCerts() {
@@ -61,11 +55,10 @@ function toggleCerts() {
   arrow.textContent = list.classList.contains("active") ? "▴" : "▾";
 }
 
-
-
+// Resume modal
 function openResume() {
   document.getElementById("resumeModal").classList.add("active");
-  document.body.style.overflow = "hidden"; // prevent background scroll
+  document.body.style.overflow = "hidden";
 }
 
 function closeResume() {
@@ -73,21 +66,17 @@ function closeResume() {
   document.body.style.overflow = "";
 }
 
-/* Close on outside click */
+// Close resume on outside click
 document.getElementById("resumeModal").addEventListener("click", (e) => {
-  if (e.target.id === "resumeModal") {
-    closeResume();
-  }
+  if (e.target.id === "resumeModal") closeResume();
 });
 
-/* Close on ESC key */
+// Close resume on ESC
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeResume();
-  }
+  if (e.key === "Escape") closeResume();
 });
 
-
+// OPEN DOCUMENT (resume / certificates) — SINGLE SOURCE OF TRUTH
 function openDoc(path) {
   const modal = document.getElementById("resumeModal");
   const frame = document.getElementById("docFrame");
@@ -100,7 +89,7 @@ function openDoc(path) {
   document.body.style.overflow = "hidden";
 }
 
-// ---------- INTERACTIVE STARFIELD (UPDATED) ----------
+// ---------- INTERACTIVE STARFIELD ----------
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -113,10 +102,10 @@ resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
 // ⭐ CONFIG
-const STAR_COUNT = 300;          // unchanged
-const MAX_REPEL_DIST = 140;       // ⬅️ half of 190
-const REPEL_STRENGTH = 0.0635;   // unchanged
-const RECOVERY_SPEED = 0.0135;     // ⬅️ 2× recovery
+const STAR_COUNT = 300;
+const MAX_REPEL_DIST = 140;
+const REPEL_STRENGTH = 0.0635;
+const RECOVERY_SPEED = 0.0101;
 
 const stars = [];
 const mouse = { x: w / 2, y: h / 2 };
@@ -126,7 +115,7 @@ window.addEventListener("mousemove", (e) => {
   mouse.y = e.clientY;
 });
 
-// Create stars (randomness unchanged)
+// Create stars
 for (let i = 0; i < STAR_COUNT; i++) {
   const x = Math.random() * w;
   const y = Math.random() * h;
@@ -148,7 +137,7 @@ function draw() {
   const t = Date.now();
 
   stars.forEach((s) => {
-    // Organic drift (unchanged)
+    // Organic drift
     s.x += s.vx + Math.sin(t * 0.0004 + s.phase) * 0.05;
     s.y += s.vy + Math.cos(t * 0.0004 + s.phase) * 0.05;
 
@@ -163,7 +152,7 @@ function draw() {
       s.y += dy * force * REPEL_STRENGTH;
     }
 
-    // ⭐ Recovery (2× faster)
+    // Recovery
     s.x += (s.baseX - s.x) * RECOVERY_SPEED;
     s.y += (s.baseY - s.y) * RECOVERY_SPEED;
 
@@ -173,7 +162,7 @@ function draw() {
     if (s.y < 0) s.y = h;
     if (s.y > h) s.y = 0;
 
-    // Flicker (unchanged)
+    // Flicker
     const flicker = 0.5 + Math.sin(t * 0.0045 + s.phase) * 0.5;
 
     ctx.beginPath();

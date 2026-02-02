@@ -758,3 +758,39 @@ body > img.social-icon-img {
   pointer-events: none; /* mouse passes through */
 }
 
+
+/* ================== DOCS + CONTACT SIDE BY SIDE ================== */
+
+.side-by-side-wrapper {
+  background: transparent;
+}
+
+.side-by-side {
+  display: flex;
+  gap: 10rem;
+  align-items: flex-start;
+}
+
+/* Each column */
+.side-block {
+  flex: 1;
+}
+
+/* Ensure cert dropdown expands normally */
+#docs {
+  overflow: visible;
+}
+
+/* Contact alignment tweak */
+#contact {
+  padding-top: 0;
+}
+
+/* ---------- Mobile: stack ---------- */
+@media (max-width: 900px) {
+  .side-by-side {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
