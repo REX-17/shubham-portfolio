@@ -1,0 +1,760 @@
+:root {
+  --bg-main: #010204;
+  --bg-section: #060710;
+  --bg-card: linear-gradient(
+    135deg,
+    #0b0f2a,
+    #060817
+  );
+
+  /* ---------- INTERACTIVE BACKGROUND CANVAS ---------- */
+
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* behind everything */
+  pointer-events: none; /* doesn't block clicks */
+  background: var(--bg-main); /* matches your dark theme */
+}
+
+
+  --text-main: #e5e7eb;
+  --text-muted: #9ca3af;
+
+  --accent: #7c7cff;
+  --accent-soft: #6366f1;
+
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --shadow-soft: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* ---------- CONTAINERS ---------- */
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 1.2rem;
+}
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.alt {
+  background: #030510;
+}
+
+/* ---------- NAVBAR ---------- */
+
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(5, 6, 10, 0.85);
+  backdrop-filter: blur(12px);
+  height:80px;
+  border-bottom: 1px solid var(--border-soft);
+  z-index: 100;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.logo {
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  color: var(--accent);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+#themeToggle {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.hero-text span {
+  color: var(--accent);
+}
+
+.hero-text p {
+  color: var(--text-muted);
+  max-width: 480px;
+}
+
+.hero-img img {
+  width: 100%;
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ---------- BUTTONS ---------- */
+
+.btn {
+  display: inline-block;
+  margin-top: 1.8rem;
+  padding: 12px 26px;
+  background: var(--accent);
+  color: #05060a;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(124, 124, 255, 0.35);
+}
+
+/* ---------- PROJECTS ---------- */
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.card {
+
+  padding: 1.6rem 1.8rem;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.3s ease, border 0.3s ease;
+  opacity:0.88;
+  background-color:#090c20;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124, 124, 255, 0.35);
+  opacity:0.95;
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: var(--text-muted);
+}
+
+/* View More button */
+.view-btn {
+  margin-top: 1rem;
+  padding: 8px 18px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(124, 124, 255, 0.35);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.view-btn:hover {
+  background: rgba(124, 124, 255, 0.12);
+  transform: scale(1.05);
+}
+
+/* ---------- SKILLS ---------- */
+
+.skills {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.skill-box {
+  flex: 1 1 300px;
+  background-color: #090c20;
+  padding: 1.6rem;
+  border-radius: 18px;
+  opacity:0.88;
+  border: 1px solid var(--border-soft);
+}
+
+.skill-box h3 {
+  margin-bottom: 0.8rem;
+}
+
+.skill-box ul {
+  list-style: square inside;
+  color: var(--text-muted);
+}
+
+/* ---------- SKILLS HOVER TRANSITION (MATCH CARDS) ---------- */
+
+.skill-box {
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.skill-box:hover {
+  transform: translateY(-6px);
+  border-color: rgba(124, 124, 255, 0.35);
+}
+
+
+
+
+/* ---------- CONTACT SECTION ---------- */
+
+.contact-section {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.contact-left {
+  max-width: 420px;
+}
+
+.contact-title {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.contact-item {
+  font-size: 1rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.contact-icon {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+
+
+/* Google icons */
+.social-icon {
+  font-size: 26px;
+  color: #ffffff; /* white icons */
+  transition: transform 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-icon:hover {
+  transform: translateY(-2px) scale(1.1);
+  color: var(--accent);
+}
+
+/* Purple separator */
+.social-sep {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+
+
+/* Mobile */
+@media (max-width: 768px) {
+  .contact-section {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .contact-left {
+    align-items: center;
+  }
+
+  .contact-item {
+    justify-content: center;
+  }
+
+  .contact-socials {
+    justify-content: center;
+  }
+}
+
+
+
+/* ---------- DOCS ---------- */
+
+.docs button {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  padding: 7px 12px;
+  width:140px;
+  height:50px;
+  background: transparent;
+  color: var(--accent);
+  border-radius: 12px;
+  border: 1px solid rgba(124, 124, 255, 0.35);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.docs button:hover {
+  background: rgba(124, 124, 255, 0.12);
+  transform: scale(1.05);
+}
+
+/* ---------- MODAL ---------- */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 200;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  background: var(--bg-section);
+  padding: 2rem;
+  border-radius: 22px;
+  max-width: 520px;
+  width: 90%;
+  border: 1px solid var(--border-soft);
+  transform: scale(0.9);
+  transition: transform 0.4s ease;
+}
+
+.modal.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-content p {
+  color: var(--text-muted);
+}
+
+.modal-content a {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* ---------- SCROLL REVEAL ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+.logo {
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+/* White name */
+.logo-name {
+  color: var(--text-main);
+}
+
+/* Purple-ish portfolio text */
+.logo-sep {
+  color: var(--accent);
+}
+
+/* Optional subtle glow on hover */
+.logo:hover .logo-sep {
+  text-shadow: 0 0 12px rgba(124, 124, 255, 0.45);
+}
+
+
+
+
+/* ---------- CERTIFICATIONS DROPDOWN (FLOW-BASED) ---------- */
+
+.certifications {
+  width: 140px;               /* button container width */
+  margin-top: 1.5rem;
+}
+
+/* Toggle button */
+.cert-toggle {
+  width: 100%;
+  padding: 20px 20px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(124, 124, 255, 0.35);
+  border-radius: 14px;
+  font-size: 1rem;
+  cursor: pointer;
+  height:50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background 0.3s ease;
+}
+
+.cert-toggle:hover {
+  background: rgba(124, 124, 255, 0.12);
+}
+
+/* Dropdown container — IN FLOW */
+.cert-list {
+  margin-top: 1rem;
+
+  width: 450px;               /* wider than parent */
+  background: var(--bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+
+  overflow: hidden;
+
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* Active state */
+.cert-list.active {
+  max-height: 600px;          /* enough for many certs */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Certificate rows */
+.cert-item {
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.cert-item:last-child {
+  border-bottom: none;
+}
+
+.cert-item span {
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.cert-item a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.3s ease;
+}
+
+.cert-item a:hover {
+  opacity: 0.8;
+}
+
+#projects,
+#experience,
+#contact {
+  background: transparent;
+}
+
+
+
+/* ---------- RESUME MODAL ---------- */
+
+.resume-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 300;
+}
+
+.resume-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.resume-container {
+  width: 80%;
+  max-width: 900px;
+  height: 80vh;
+
+  background: var(--bg-section);
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow: var(--shadow-soft);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  transform: scale(0.95);
+  transition: transform 0.4s ease;
+}
+
+.resume-modal.active .resume-container {
+  transform: scale(1);
+}
+
+/* Header */
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.9rem 1.2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid var(--border-soft);
+
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* Actions */
+.resume-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.resume-download {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.resume-download:hover {
+  text-decoration: underline;
+}
+
+.resume-close {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* PDF iframe */
+.resume-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .resume-container {
+    width: 95%;
+    height: 85vh;
+  }
+}
+
+/* ---------- CERTIFICATE VIEW BUTTON ---------- */
+
+.cert-item button {
+  padding: 6px 14px;
+  border-radius: 999px;              /* makes it pill-shaped */
+  background: rgba(124, 124, 255, 0.15); /* soft purple */
+  color: var(--accent);
+  border: 1px solid rgba(124, 124, 255, 0.35);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 
+    background 0.3s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.cert-item button:hover {
+  background: var(--accent);         /* solid purple on hover */
+  color: #05060a;                    /* dark text */
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(124, 124, 255, 0.35);
+}
+
+.cert-item button:active {
+  transform: scale(0.95);
+}
+
+/* ---------- SKILLS GRID: 2 x 2 ---------- */
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+/* Mobile fallback: 1 column */
+@media (max-width: 768px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
+}
+/* ================== CONTACT SOCIAL ICONS — HARD FIX ================== */
+
+/* Scope icons ONLY inside contact section */
+#contact .contact-socials {
+  position: static;          /* kills fixed / absolute bugs */
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  margin-top: 0.6rem;
+  padding-left: 1.6rem;      /* aligns under email text */
+}
+
+/* Prevent icons from escaping layout */
+#contact .contact-socials a {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  line-height: 0;
+}
+
+/* Image icons only */
+#contact .social-icon-img {
+  width: 22px;
+  height: 22px;
+  display: block;
+  object-fit: contain;
+
+  transform: none;
+  opacity: 1;
+
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+#contact .social-icon-img:hover {
+  transform: translateY(-2px) scale(1.08);
+  opacity: 0.85;
+}
+
+/* Separator */
+#contact .social-sep {
+  color: var(--accent);
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ABSOLUTE SAFETY: hide any orphan icons elsewhere */
+body > a .social-icon-img,
+body > img.social-icon-img {
+  display: none !important;
+}
+
+
+/* Separator */
+.social-sep {
+  color: var(--accent);
+  font-weight: 600;
+}
+/* ---------- STAR BACKGROUND CANVAS ---------- */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;           /* stays behind all sections */
+  pointer-events: none; /* mouse passes through */
+}
+
