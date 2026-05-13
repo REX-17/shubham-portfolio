@@ -84,6 +84,7 @@
           <li>Python</li>
           <li>Verilog HDL</li>
           <li>Assembly</li>
+          
         </ul>
       </div>
       <div class="skill-box">
@@ -94,7 +95,7 @@
           <li>Cadence AWR</li>
           <li>ModelSim</li>
           <li>Cadence Virtuoso</li>
-          <li>R Studio</li>
+          <li>CST Studios</li>
           <li>Altair Feko</li>
           <li>MATLAB</li>
 
@@ -107,6 +108,9 @@
           <li>ASIC Design Flow</li>
           <li>Nanomaterials Characterization</li>
           <li>Probe Testing</li>
+          <li>Machine learning</li>
+          <li>Edge based data collection</li>
+          <li>Antenna designing and simulation</li>
         
         </ul>
       </div>
@@ -141,15 +145,39 @@
   <div class="container reveal">
     <h1>Projects</h1><br>
     <div class="cards">
+
       <div class="card">
-        <h3>Fire Fighting Robot</h3>
-        <p>Arduino-based autonomous fire detection system.</p>
-        <button class="view-btn" onclick="openProject(
-          'Fire Fighting Robot',
-          'Arduino-based robot for fire detection and extinguishing.',
-          'https://github.com/yourusername/fire-fighting-robot'
-        )">View More</button>
+        <h3>AI Assisted Water quality monitoring system using ESP32</h3>
+        <p>This project presents an AI-assisted real-time water quality monitoring system designed to estimate contamination levels using turbidity and color analysis.</p>
+       <button class="view-btn" onclick="openProject(
+      'AI Assisted Water quality monitoring system using ESP32',
+      'The system integrates an ESP32 microcontroller with turbidity and RGB color sensors to continuously monitor water conditions and visualize contamination severity through an interactive dashboard. The project combines sensor fusion, calibrated contamination estimation, and AI-generated remediation guidance to provide an explainable and low-cost approach for water quality assessment aligned with SDG-6 objectives.',
+      'https://github.com/REX-17/AI-assisted-water-quality-checking-system-using-ESP32/tree/main'
+)">View More</button>
       </div>
+
+
+      <div class="card">
+        <h3>ML Assisted antenna design</h3>
+        <p>This project focuses on predicting antenna S11 characteristics using machine learning and custom mathematical modeling techniques combined with electromagnetic simulation tools.</p>
+       <button class="view-btn" onclick="openProject(
+      'AI Assisted Water quality monitoring system using ESP32',
+      ' The complete project was developed in three major phases: Firstly, Altair FEKO + Initial ML Workflow. Then CST Studio + Random Forest Regression and finally, Custom Mathematical ML Model using Gradient Descent. The final phase focuses on a fully custom ML model designed from scratch to learn antenna resonance behavior directly from CST-generated datasets.',
+      'https://github.com/REX-17/ML-assisted-Antenna-designing/tree/main'
+)">View More</button>
+      </div>
+
+       <div class="card">
+        <h3>Tiny ML based Neuro tremor detection system</h3>
+        <p>This project presents a TinyML-based healthcare monitoring system designed for real-time detection of neurological tremors using embedded hardware.</p>
+       <button class="view-btn" onclick="openProject(
+      'Tiny ML based Neuro tremor detection system',
+      'The system performs on-device inference using a lightweight machine learning model deployed on the ESP32 microcontroller, eliminating dependency on cloud computing and enabling low-latency monitoring. The project integrates motion and physiological sensing using the MPU6050 IMU sensor and MAX30102 heart rate sensor to improve reliability and provide continuous real-time monitoring.',
+      'https://github.com/REX-17/Neuro_tremor'
+)">View More</button>
+      </div>
+
+
 
       <div class="card">
         <h3>Development of neuromorphic memory devices using PLD</h3>
@@ -170,10 +198,15 @@
         <p>Responsive personal portfolio website.</p>
         <button class="view-btn" onclick="openProject(
           'Web Portfolio',
-          'Portfolio with animations, dark mode and smooth scrolling.',
-          'https://github.com/yourusername/portfolio'
+          ' A place to store a collection of my academics and display my skills and experiences.',
+          'https://github.com/REX-17/shubham-portfolio#'
         )">View More</button>
       </div>
+    
+
+     
+
+    
     </div>
   </div>
 </section>
@@ -312,6 +345,8 @@
 
 <!-- Interactive Background Starfield -->
 <canvas id="bgCanvas"></canvas>
+
+
 
 
 <script src="port.js"></script>
